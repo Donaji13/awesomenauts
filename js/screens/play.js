@@ -14,13 +14,15 @@ game.PlayScreen = me.ScreenObject.extend({
 		// adds player to the world
 		me.game.world.addChild(player, 5);
 
-		//binds the right key for movement
+		var gamemanager = me.pool.pull("GameManager", 0, 0, {});
+		me.game.world.addChild(gamemanager, 0);
+
 		me.input.bindKey(me.input.KEY.RIGHT, "right");
-		//binds the left key for movement
+
 		me.input.bindKey(me.input.KEY.LEFT, "left");
-		// binds the space bar for jumping
+
 		me.input.bindKey(me.input.KEY.SPACE, "jump");
-		//binds the attack key for attack
+
 		me.input.bindKey(me.input.KEY.A, "attack");
 		
 

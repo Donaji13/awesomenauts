@@ -6,12 +6,10 @@ game.resources = [
 	 */
 	 // loads our background tiles
 	 {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
-	 // loads meta-tiles
 	 {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
-	 // loads the character
-	 {name: "player", type:"image", src: "data/img/orcSpear.png"},
-	 //loads the tower
+	 {name: "player", type:"image", src: "data/img/orcSpear.png"}, 
 	 {name: "tower", type:"image", src: "data/img/tower_round.svg.png"},
+	 {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
