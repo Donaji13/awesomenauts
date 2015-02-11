@@ -22,6 +22,7 @@ game.PlayerEntity = me.Entity.extend({
 		//lets the character hit the other characters over and over again
 		this.lastHit = this.now;
 		this.lastAttack = new Date () .getTime();
+
 		//where ever the player goes the screen follows
 		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
@@ -122,9 +123,6 @@ game.PlayerEntity = me.Entity.extend({
 				this.body.falling = false;
 				this.body.vel.y = -1;
 			}
-			//the the player goes more than the number placed then it will stop moving
-			//facing code allows us to move away from the base
-			// xdif makes sure that both if statements wont trigger
 			else if(xdif>-35 && this.facing==='right' && (xdif<0)){
 				//stops player from moving if they hit the base
 				this.body.vel.x = 0;
@@ -135,11 +133,10 @@ game.PlayerEntity = me.Entity.extend({
 				this.body.vel.x = 0;
 				this.pos.x = this.pos.x +1;
 			}
-			//checks if the current animation is attack
 			if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= 1000){
 				cosole.log("tower Hit");
 				this.lastHit = this.now;
-				//character dies
+				// the character dies
 				response.b.loseHealth();
 			}
 		}
@@ -168,10 +165,9 @@ game.PlayerBaseEntity = me.Entity.extend({
 		this.alwaysUpdate = true;
 		//if someone runs into the tower it will be able to collide
 		this.body.onCollision = this.onCollision.bind(this);
-
 		//type that can be used later during other collisons
-		this.type = "PlayerBaseEntity";
-		//adds animation to the tower
+		this.type = "PlayerBase";
+		//adds animation to tower
 		this.renderable.addAnimation("idle", [0]);
 		this.renderable.addAnimation("broken", [1]);
 		this.renderable.setCurrentAnimation("idle");
@@ -238,13 +234,12 @@ game.EnemyBaseEntity = me.Entity.extend({
 		return true;
 	},
 
-	onCollision: function(){
-		
+	loseHealth: function(damage){
+		//losses health
+		this.health = this.health - damage;
 	},
 
-	loseHealth: function(){
-		//losses health
-		this.health--;
+		onCollision: function(){
 	}
 
 });
@@ -266,6 +261,11 @@ game.EnemyCreep = me.Entity.extend({
 		this.health = 10;
 		this.alwaysUpdate = true;
 
+		this.attacking = false;
+
+		this.lastAttacking = new Date().getTime();
+		this.lastMit = new Date().getTime();
+		this.now = new Date().getTime();
 		this.body.setVelocity(3, 20);
 
 		this.type = "EnemyCreep";
@@ -274,8 +274,34 @@ game.EnemyCreep = me.Entity.extend({
 		this.renderable.setCurrentAnimation("walk");
 	},
 
-	update: function(){
+	update: function(delta){
 
+		this.now = new Date().getTime();
+
+		this.body.vel.x -= this.body.accel.x * me.timer.tick;
+
+
+		me.collision.check(this, true, this.collideHandler.bind(this), true);
+
+		this.body.update(delta);
+
+		this._super(me.Entity, "update", [delta]);
+
+		return true;
+
+		},
+
+		collideHandler: function(response){
+			if(response.b.type==='PlayerBase'){
+				this.attacking=true;
+				//this.lastAttacking=this.now;
+				this.body.vel.x = 0;
+				this.pos.x = this.pos.x + 1;
+				if((this.now-this.lastMit >= 1000)){
+					this.lastHit = this.now;
+					response.b.loseHealth(1);
+				}
+			}
 	}
 });
 
