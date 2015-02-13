@@ -1,6 +1,3 @@
-// since it is a class both letter are capitilized
-// player class. Shows the image that the player is, the height and width
-//also the shape of it
 game.PlayerEntity = me.Entity.extend({
 	init: function(x, y, settings) {
 		this._super(me.Entity, 'init', [x, y, {
@@ -13,6 +10,7 @@ game.PlayerEntity = me.Entity.extend({
 				return(new me.Rect(0, 0, 100, 70)).toPolygon();
 			} 
 			}]);
+		this.type = "PlayerEntity";
 		//sets the speed of the character
 		this.body.setVelocity(5, 20);
 		//keeps track of what direction your character is going
@@ -109,6 +107,13 @@ game.PlayerEntity = me.Entity.extend({
 		return true;
 	},
 
+	loseHealth: function(damage){
+		this.health = this.health - damage;
+		//console.log(this.helath);
+	},
+
+
+
 	// tells us if we collide with the enemy base
 	collideHandler: function(response){
 		if(response.b.type==='EnemyBaseEntity'){
@@ -138,7 +143,7 @@ game.PlayerEntity = me.Entity.extend({
 			}
 			//checks if the current animation is attack
 			if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= 1000){
-				cosole.log("tower Hit");
+				console.log("tower Hit");
 				this.lastHit = this.now;
 				//character dies
 				response.b.loseHealth();
@@ -201,12 +206,8 @@ game.PlayerBaseEntity = me.Entity.extend({
 	}
 
 });
-// _____________________________________________________________________________________________________________________________
 
 
-
-
-//loads the player base from melon js
 game.EnemyBaseEntity = me.Entity.extend({
 	init : function(x, y, settings){
 		this._super(me.Entity, 'init', [x, y, {
@@ -260,7 +261,6 @@ game.EnemyBaseEntity = me.Entity.extend({
 	}
 
 });
-// line 85- 91 makes the player move while walking
 
 game.EnemyCreep = me.Entity.extend({
 	init: function(x, y, settings){
@@ -338,8 +338,13 @@ game.EnemyCreep = me.Entity.extend({
 				//a function that causes the player to loose some health
 				response.b.loseHealth(1);
 			}
-		}//what happens if we hit the player base
-		//else if (){}
+		} else if (response.b.type==='PlayerEntity'){
+			var xdif = this.pos.x - response.b.pos.x;
+
+
+
+		}
+		
 	}
 });
 

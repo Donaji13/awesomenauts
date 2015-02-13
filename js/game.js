@@ -1,5 +1,3 @@
-
-/* Game namespace */
 var game = {
 
 	// an object where to store game information
