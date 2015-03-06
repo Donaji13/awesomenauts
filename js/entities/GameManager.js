@@ -1,11 +1,8 @@
-//removes the player and resets him if he dies
-//adds gold
-//manages creeps
 game.GameTimerManager = Object.extend({
 	init: function(x, y, settings){
 		this.now = new Date().getTime();
 		this.lastCreep = new Date().getTime();
-		//creepe cannot pause at all
+
 		this.paused = false;
 		this.alwaysUpdate = true;
 	},
@@ -17,9 +14,9 @@ game.GameTimerManager = Object.extend({
 
 		return true;
 	},
-	//organizes code above
+	//organizes all code above
 	goldTimerCheck: function(){
-		//controls when the creep spons
+		//controls the creep spons
 		if(Math.round(this.now/1000)%20 ===0 && (this.now - this.lastCreep >= 1000)){
 			game.data.gold += 1;
 			console.log("Current gold: " + game.data.gold);
@@ -92,8 +89,10 @@ game.ExperienceManager = Object.extend({
 		}
 		    
 			this.gameOver = true;
-			//saves the 5 exp variables in game.js
+
 			me.save.exp = game.data.exp;
+//for testing purposes
+			me.save.exp2 = 4;
 	}
 });
 

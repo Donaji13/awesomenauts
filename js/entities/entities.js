@@ -37,8 +37,8 @@ game.PlayerEntity = me.Entity.extend({
 			}]);
 	},
 
-//takes all the code from other parts and puts it in a function to make it more organized
-//timers set
+
+     //sets timers 
 	setPlayerTimers: function(){
 		//keeps track of what time it is for the game
 		this.now = new Date().getTime();

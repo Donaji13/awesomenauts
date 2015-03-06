@@ -15,9 +15,8 @@ game.TitleScreen = me.ScreenObject.extend({
 				me.input.registerPointerEvent('pointerdown', this, this.newGame.bind(this), true);
 			},
 
-			//function renderer tells the font size of the words in quotations
 			draw: function(renderer){
-				this.font.draw(renderer.getContext(), "START A NEW GAME", this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), "START NEW GAME", this.pos.x, this.pos.y);
 			},
 
 

@@ -15,9 +15,9 @@ game.resources = [
 	 //loads the image for our creep/ enemy
 	 {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
 
-	 {name: "Player2", type:"image", src: "data/img/gloop.png"},
+	// {name: "Player2", type:"image", src: "data/img/gloop.png"},
 
-	 {name: "title-screen", type:"image", src: "data/img/title.png"},
+	 {name: "title-screen", type:"image", src: "data/img/pp.jpg"},
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
@@ -40,6 +40,6 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
-	 //{name: "jump", type: "audio", src: "data/sfx/"},
-	 //{name: "stomp", type: "audio", src: "data/sfx/"}
+	 {name: "jump", type: "audio", src: "data/sfx/"},
+		{name: "stomp", type: "audio", src: "data/sfx/"}
 ];
