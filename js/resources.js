@@ -30,10 +30,12 @@ game.resources = [
  	 */
  	 // loads level01 
  	 {name: "level01", type: "tmx", src: "data/map/level01.tmx"},
-	/* Background music. 
-	 * @example
-	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
-	 */
+	/* Background music. */
+	
+	 
+	 {name: "ariana1", type: "audio", src: "data/bgm/"},
+	 {name: "coolkid", type: "audio", src: "data/bgm/"},
+	 {name: "sugar", type: "audio", src: "data/bgm/"},
 	 	
 
 	/* Sound effects. 
