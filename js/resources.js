@@ -17,7 +17,7 @@ game.resources = [
 
 	// {name: "Player2", type:"image", src: "data/img/gloop.png"},
 
-	 {name: "title-screen", type:"image", src: "data/img/pp.jpg"},
+	 {name: "title-screen", type:"image", src: "data/img/psg.jpg"},
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
