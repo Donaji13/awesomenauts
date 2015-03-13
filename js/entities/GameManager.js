@@ -1,8 +1,11 @@
+//removes the player and resets him if he dies
+//adds gold
+//manages creeps
 game.GameTimerManager = Object.extend({
 	init: function(x, y, settings){
 		this.now = new Date().getTime();
 		this.lastCreep = new Date().getTime();
-
+		//creepe cannot pause at all
 		this.paused = false;
 		this.alwaysUpdate = true;
 	},
@@ -14,11 +17,11 @@ game.GameTimerManager = Object.extend({
 
 		return true;
 	},
-	//organizes all code above
+	//organizes code above
 	goldTimerCheck: function(){
-		//controls the creep spons
+		//controls when the creep spons
 		if(Math.round(this.now/1000)%20 ===0 && (this.now - this.lastCreep >= 1000)){
-			game.data.gold += 1;
+			game.data.gold += (game.data.exp1+1);
 			console.log("Current gold: " + game.data.gold);
 
 		}
@@ -61,14 +64,14 @@ game.HeroDeathManager = Object.extend({
 game.ExperienceManager = Object.extend({
 	init: function (x, y, settings) {
 		this.alwaysUpdate = true;
-		this.gameOver = false;
+		this.gameover = false;
 	},
 
 	update: function(){
-		if(game.data.win === true && !this.gameOver){
+		if(game.data.win === true && !this.gameover){
 			//the game is over when the player dies
 			this.gameOver(true);
-		}else if(game.data.win === false && !this.gameOver){
+		}else if(game.data.win === false && !this.gameover){
 			this.gameOver(false);
 			//this.gameOver = true;
 			//saves current game variable
@@ -87,14 +90,63 @@ game.ExperienceManager = Object.extend({
 		}else{
 			game.data.exp += 1;
 		}
-		    
-			this.gameOver = true;
-
+		    console.log(game.data.exp);
+			this.gameover = true;
+			//saves the 5 exp variables in game.js
 			me.save.exp = game.data.exp;
-//for testing purposes
-			me.save.exp2 = 4;
+			
+			
 	}
 });
 
-       
+game.SpendGold = Object.extend({
+	init: function (x, y, settings){
+		this.now = new Date().getTime();
+		this.lastBuy = new Date().getTime();
+		//creepe cannot pause at all
+		this.paused = false;
+		this.alwaysUpdate = true;
+		this.updateWhenPaused = true;
+		this.buying = false;
+	},
+
+	update: function(){
+		this.now = new Date().getTime();
+
+		if(me.input.isKeyPressed("buy") && this.now-this.lastBuy >=1000){
+			this.lastBuy = this.now;
+			if(!this.buying){
+				this.startBuying();
+			}else{
+				this.stopBuying();
+			}
+		}
+
+
+		return true;
+		
+	},
+
+	startBuying: function(){
+		this.buying = true;
+		me.state.pause(me.state.PLAY);
+		game.data.pausePos = me.game.viewport.localToWorld(0, 0);
+		game.data.buyscreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage('gold-screen'));
+		game.data.buyscreen.updateWhenPaused = true;
+		game.data.buyscreen.setOpacity(0.8);
+		me.game.world.addChild(game.data.buyscreen, 34);
+		game.data.player.body.setVelocity(0, 0);
+	},
+
+	stopBuying: function(){
+		this.buying = false;
+		me.state.resume(me.state.PLAY);
+		game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
+		me.game.world.removeChild(game.data.buyscreen);
+	}
+
+	//6: 23
+
+
+});
 

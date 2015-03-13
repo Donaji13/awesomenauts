@@ -1,3 +1,6 @@
+// since it is a class both letter are capitilized
+// player class. Shows the image that the player is, the height and width
+//also the shape of it
 game.PlayerEntity = me.Entity.extend({
 	init: function(x, y, settings) {
 		//leads to set super fuction below
@@ -14,7 +17,9 @@ game.PlayerEntity = me.Entity.extend({
 		
 		//where ever the player goes the screen follows
 		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-
+		
+		//leads to add animation fucntion below
+		//used to organize code
 		this.addAnimation();
 
 		//sets currect animation
@@ -37,8 +42,8 @@ game.PlayerEntity = me.Entity.extend({
 			}]);
 	},
 
-
-     //sets timers 
+//takes all the code from other parts and puts it in a function to make it more organized
+//timers set
 	setPlayerTimers: function(){
 		//keeps track of what time it is for the game
 		this.now = new Date().getTime();
@@ -47,6 +52,8 @@ game.PlayerEntity = me.Entity.extend({
 		this.lastAttack = new Date().getTime();
 	},
 
+	//set attributes function
+	//leads up to line 11
 	setAttributes: function(){
 		//sets players health
 		//uses the global variable that helps the player loose health

@@ -15,9 +15,11 @@ game.resources = [
 	 //loads the image for our creep/ enemy
 	 {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
 
-	// {name: "Player2", type:"image", src: "data/img/gloop.png"},
+	 {name: "Player2", type:"image", src: "data/img/gloop.png"},
 
-	 {name: "title-screen", type:"image", src: "data/img/psg.jpg"},
+	 {name: "title-screen", type:"image", src: "data/img/title.png"},
+	 {name: "exp-screen", type:"image", src: "data/img/loadpic.png"},
+	 {name: "gold-screen", type:"image", src: "data/img/spend.png"},
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
@@ -30,12 +32,10 @@ game.resources = [
  	 */
  	 // loads level01 
  	 {name: "level01", type: "tmx", src: "data/map/level01.tmx"},
-	/* Background music. */
-	
-	 
-	 {name: "ariana1", type: "audio", src: "data/bgm/"},
-	 {name: "coolkid", type: "audio", src: "data/bgm/"},
-	 {name: "sugar", type: "audio", src: "data/bgm/"},
+	/* Background music. 
+	 * @example
+	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
+	 */
 	 	
 
 	/* Sound effects. 
@@ -43,5 +43,5 @@ game.resources = [
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
 	 {name: "jump", type: "audio", src: "data/sfx/"},
-		{name: "stomp", type: "audio", src: "data/sfx/"}
+	 {name: "stomp", type: "audio", src: "data/sfx/"}
 ];
