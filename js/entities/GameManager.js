@@ -1,6 +1,3 @@
-//removes the player and resets him if he dies
-//adds gold
-//manages creeps
 game.GameTimerManager = Object.extend({
 	init: function(x, y, settings){
 		this.now = new Date().getTime();
@@ -161,12 +158,12 @@ game.SpendGold = Object.extend({
 
 			//function renderer tells the font size of the words in quotations
 			draw: function(renderer){
-				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT", this.pos.x, this.pos.y);
-				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT", this.pos.x, this.pos.y);
-				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT", this.pos.x, this.pos.y);
-				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT", this.pos.x, this.pos.y);
-				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT", this.pos.x, this.pos.y);
-				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT", this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B to EXIT. Current Gold: " + game.data.gold, this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), " ", this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), " ", this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), " ", this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), " ", this.pos.x, this.pos.y);
+				this.font.draw(renderer.getContext(), " ", this.pos.x, this.pos.y);
 			},
 		}));
 

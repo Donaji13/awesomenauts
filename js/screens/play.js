@@ -56,7 +56,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
 		//plays background music
-		me.audio.playTrack("");
+		me.audio.playTrack("Zelda Main Theme Song");
 		
 	},
 
