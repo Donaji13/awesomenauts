@@ -6,6 +6,9 @@ var game = {
 	data : {
 		// score
 		score : 0,
+		//fixes pointer problem with game
+		option1: "",
+		option2: "",
 		//global variables that we can use throughout the game
 		enemyBaseHealth: 1,
 		playerBaseHealth: 1,
@@ -23,6 +26,7 @@ var game = {
 		creepMoveSpeed: 5,
 		gameTimerManager:"",
 		herodeathmanager: "",
+		spearTimer: 15,
 		player:"",
 		exp: 0,
 		gold: 0,
@@ -39,7 +43,9 @@ var game = {
 		win: "",
 		pausePos: "",
 		buyscreen: "",
-		buytext: ""
+		buytext: "",
+		minimap: "",
+		miniplayer: ""
 
 
 	},
@@ -59,8 +65,7 @@ var game = {
 			me.plugin.register.defer(this, debugPanel, "debug");
 		});
 	}
-	// creates a safe engine with these variables
-	me.save.add({exp: 0, exp1: 0, exp2: 0, exp3: 0, exp4: 0});
+	
 
 	me.state.SPENDEXP = 112;
 	me.state.LOAD = 113;
@@ -104,6 +109,12 @@ var game = {
 		me.pool.register("ExpierenceManager", game.ExpierenceManager);
 		//adds the resource spend gold into the game
 		me.pool.register("SpendGold", game.SpendGold);
+		// adds the spear throw resource into the game
+		me.pool.register("spear", game.SpearThrow);
+		//adds the minimap to the game
+		me.pool.register("minimap", game.MiniMap, true);
+		//adds the miniplayerlocation to the game
+		me.pool.register("miniplayer", game.MiniPlayerLocation, true);
 
 
 		me.state.set(me.state.MENU, new game.TitleScreen());

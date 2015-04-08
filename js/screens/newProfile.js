@@ -5,6 +5,12 @@ game.NewProfile = me.ScreenObject.extend({
 	onResetEvent: function() {	
 		//adds title screen to the beggining of the game
 		me.game.world.addChild(new me.Sprite(0, 0, me.loader.getImage('new-screen')), -10); // TODO
+		//hides the input button until the user logs onto the username and password page
+		document.getElementById("input").style.visibility = "visible";
+		//hides the register button until the user logs onto the username and password page
+		document.getElementById("register").style.visibility = "visible";
+		
+
 	    //binds the F1 key so that the player can increase their gold
 	    me.input.unbindKey(me.input.KEY.B);
 	    me.input.unbindKey(me.input.KEY.Q);
@@ -35,7 +41,10 @@ game.NewProfile = me.ScreenObject.extend({
 	 *  action to perform when leaving this screen (state change)
 	 */
 	onDestroyEvent: function() {
-
+		//hides the input button until the user logs onto the username and password page
+		document.getElementById("input").style.visibility = "hidden";
+		//hides the register button until the user logs onto the username and password page
+		document.getElementById("register").style.visibility = "hidden";
 	}
 });
 

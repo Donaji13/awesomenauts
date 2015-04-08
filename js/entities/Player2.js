@@ -2,7 +2,7 @@ game.Player2 = me.Entity.extend({
 	init: function(x, y, settings){
 		this._super(me.Entity, 'init', [x, y, {
 			//loads our image creep 1 from our resources folder
-			image: "Player2",
+			image: "data/img/gloop.png",
 			width: 100,
 			height: 85,
 			spritewidth: "100",

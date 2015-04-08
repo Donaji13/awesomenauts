@@ -32,6 +32,8 @@ game.GameTimerManager = Object.extend({
 			var creepe = me.pool.pull("EnemyCreep", 1000, 0, {});
 			me.game.world.addChild(creepe, 5);
 
+			var creepe2 = me.pool.pull("EnemyHero", 1000, 100, {});
+			me.game.world.addChild(creepe2, 5);
 			//var creepe1 = me.pool.pull("Player2", 1000, 0, {});
 			//me.game.world.addChild(creepe, 5);
 

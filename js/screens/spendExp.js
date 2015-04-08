@@ -1,7 +1,5 @@
 game.SpendExp = me.ScreenObject.extend({
-	/**	
-	 *  action to perform on state change
-	 */
+	
 	onResetEvent: function() {	
 		//adds title screen to the beggining of the game
 		me.game.world.addChild(new me.Sprite(0, 0, me.loader.getImage('exp-screen')), -10); // TODO
@@ -11,7 +9,7 @@ game.SpendExp = me.ScreenObject.extend({
 	    me.input.bindKey(me.input.KEY.F3, "F3");
 	    me.input.bindKey(me.input.KEY.F4, "F4");
 	    me.input.bindKey(me.input.KEY.F5, "F5");
-	    var exp1cost = ((game.data.exp1 + 1) * 10);
+	    var exp1cost = ((Number(game.data.exp1) + 1) * 10);
 	
 		//adds the word awesomenauts to the game
 		me.game.world.addChild(new (me.Renderable.extend({
