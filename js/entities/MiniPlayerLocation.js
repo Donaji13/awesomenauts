@@ -1,10 +1,7 @@
 game.MiniPlayerLocation = me.Entity.extend({
 	init: function(x, y, settings){
-		//customizes the map 
-		//tells where the map will be displayed
-		//tells how big the map is
-		// tells to follow character
-		this.settings =settings;
+		//customize the map 
+		this.settings = settings;
 		this.r = 5;
 		this.diameter = (this.r+2)*2;
 		this.anchorPoint = new me.Vector2d(0, 0);
@@ -32,7 +29,7 @@ game.MiniPlayerLocation = me.Entity.extend({
 			spritewidth: 14,
 			spriteheight: 14,
 			getShape: function(){
-				return (new me.Rect(0, 0, 14, 14)) .toPolygon();
+				return (new me.Rect(0, 0, 14, 14)).toPolygon();
 			}
 		}]);
 
@@ -55,4 +52,4 @@ game.MiniPlayerLocation = me.Entity.extend({
 		return true;
 
 	}
-})
+});
